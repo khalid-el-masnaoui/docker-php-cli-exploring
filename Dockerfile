@@ -57,6 +57,12 @@ RUN pecl install redis \
             opcache
 
 
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- \
+        --install-dir=/usr/local/bin \
+        --filename=composer
+
+
 RUN mkdir /dockerBuild
 
 #COPY ./src/ /dockerBuild/
