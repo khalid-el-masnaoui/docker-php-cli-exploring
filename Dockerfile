@@ -66,6 +66,10 @@ RUN pecl install redis \
 #using multistage 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
+#add apcu
+RUN pecl install apcu \
+  && docker-php-ext-enable apcu
+
 
 RUN mkdir /dockerBuild
 
