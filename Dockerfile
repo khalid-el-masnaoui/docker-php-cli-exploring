@@ -70,6 +70,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN pecl install apcu \
   && docker-php-ext-enable apcu
 
+# Install PHPUnit Globaly
+RUN wget https://phar.phpunit.de/phpunit.phar -O /usr/local/bin/phpunit \
+    && chmod +x /usr/local/bin/phpunit
+
+# Clean repository
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 
 RUN mkdir /dockerBuild
 
