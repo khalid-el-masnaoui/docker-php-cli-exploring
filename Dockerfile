@@ -82,6 +82,12 @@ RUN apt-get clean \
 RUN mkdir /dockerBuild
 
 #COPY ./src/ /dockerBuild/
+COPY ./configurations/php.ini  /usr/local/etc/php/
+COPY ./configurations/mods-available/opcache.ini  /usr/local/etc/php/conf.d/
+
+
+#disable the default opcache.ini
+RUN mv /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini /usr/local/etc/php/conf.d/odocker-php-ext-pcache.ini.disabled
 
 WORKDIR /dockerBuild
 

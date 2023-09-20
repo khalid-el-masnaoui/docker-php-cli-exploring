@@ -6,5 +6,5 @@ $fp = fopen("file.txt","a");
 fwrite($fp,$content);
 fclose($fp);
 
-
+phpinfo();
 ?>
