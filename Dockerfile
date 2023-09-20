@@ -93,5 +93,9 @@ WORKDIR /dockerBuild
 
 CMD [ "php", "./index.php" ]
 
+#for a local server
+EXPOSE 8080
+
+
 #Define mountable directories.
 VOLUME ["/dockerBuild"]
