@@ -28,6 +28,12 @@ This php-cli image includes all the following extensions (installed and enabled)
 
 In addition of the above extension , this php-cli image includes _**Composer**_ and _**PhpUnit**_ as well, installed globally.
 
+
+## PHP Configurations
+
+This php-cli is not using the custom php configs, instead it is relaying on some custom configurations found inside the folder _**/usr/local/etc/php/**_, specifcally _php.ini_ file and the enabled modules inside the folder _conf.d_, in which only opache module (_opache.ini_) has custom configurations.
+feel free to update those configs as per your need.
+
 ## Docker
 By default, the Docker will expose ports 8080/tcp for the php local server, so change this within the
 Dockerfile if necessary. When ready, simply use the Dockerfile to
