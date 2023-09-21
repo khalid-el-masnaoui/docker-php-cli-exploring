@@ -1,8 +1,32 @@
-# Php-cli container custom images
+# Php-cli container custom image
 
-## _Custom php-cli images with dependencies and extensions_
+## _Custom php-cli image with dependencies and extensions_
 
-Exploring docker by creating custom php-cli images with dependencies and extensions
+Exploring docker by creating custom php-cli image including many extensions and their dependencies.
+
+
+## Extensions (All their dependencies are installed)
+
+This php-cli image includes all the following extensions (installed and enabled).
+
+| Extension | README |
+| ------ | ------ |
+| **Redis** | [Github Repository](https://github.com/redis/redis){:target="_blank"} |
+| **Memcached** | [Github Repository](https://github.com/memcached/memcached) |
+| **Apcu** | [PHP Manual](https://www.php.net/manual/en/book.apcu.php) |
+| **Mcrypt** | [PHP Manual](https://www.php.net/manual/en/book.mcrypt.php) |
+| **Iconv** | [PHP Manual](https://www.php.net/manual/en/function.iconv.php) |
+| **Mbstring** | [PHP Manual](https://www.php.net/manual/en/book.mbstring.php) |
+| **Mysqli** | [PHP Manual](https://www.php.net/manual/en/book.mysqli.php) |
+| **Pdo_mysql** | [PHP Manual](https://www.php.net/manual/en/ref.pdo-mysql.php) |
+| **Sockets** | [PHP Manual](https://www.php.net/manual/en/book.sockets.php) |
+| **Zip** | [PHP Manual](https://www.php.net/manual/en/book.zip.php) |
+| **Pcntl** | [PHP Manual](https://www.php.net/manual/en/book.pcntl.php) |
+| **Ftp** | [PHP Manual](https://www.php.net/manual/en/book.ftp.php) |
+| **Bcmath** | [PHP Manual](https://www.php.net/manual/en/book.bc.php) |
+| **Intl** | [PHP Manual](https://www.php.net/manual/en/book.intl.php) |
+
+In addition of the above extension , this php-cli image includes _**Composer**_ and _**PhpUnit**_ as well, installed globally.
 
 ## Docker
 By default, the Docker will expose ports 8080/tcp for the php local server, so change this within the
