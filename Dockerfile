@@ -80,7 +80,7 @@ RUN apt-get clean \
 
 RUN mkdir /dockerBuild
 
-#COPY ./src/ /dockerBuild/
+COPY ./src/ /dockerBuild/
 COPY ./configurations/php.ini  /usr/local/etc/php/
 COPY ./configurations/mods-available/opcache.ini  /usr/local/etc/php/conf.d/
 
@@ -91,11 +91,12 @@ WORKDIR /dockerBuild
 
 CMD [ "php", "./index.php" ]
 
-#Define mountable directories.
-VOLUME ["/dockerBuild"]
+#Define mountable directories -- for developement.
+#VOLUME ["/dockerBuild"]
 
 #for a local server
 EXPOSE 8080
-CMD [ "php", "-S", "0.0.0.0:8080 &" ]
+CMD ["php","-S","0.0.0.0:8080"]
+
 
 
