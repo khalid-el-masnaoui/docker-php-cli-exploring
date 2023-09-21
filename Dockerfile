@@ -78,13 +78,11 @@ RUN wget https://phar.phpunit.de/phpunit.phar -O /usr/local/bin/phpunit \
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-
 RUN mkdir /dockerBuild
 
 #COPY ./src/ /dockerBuild/
 COPY ./configurations/php.ini  /usr/local/etc/php/
 COPY ./configurations/mods-available/opcache.ini  /usr/local/etc/php/conf.d/
-
 
 #disable the default opcache.ini
 RUN mv /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini /usr/local/etc/php/conf.d/odocker-php-ext-pcache.ini.disabled
