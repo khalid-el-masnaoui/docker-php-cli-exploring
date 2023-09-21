@@ -1,17 +1,17 @@
-# Php-cli container custom image
+# PHP-CLI container custom image
 
 ## _Custom php-cli image with dependencies and extensions_
 
-Exploring docker by creating custom php-cli image including many extensions and their dependencies.
+Exploring docker by creating custom php-cli image including many extensions and their required dependencies.
 
 
-## Extensions (All their dependencies are installed)
+## Extensions
 
 This php-cli image includes all the following extensions (installed and enabled).
 
 | Extension | README |
 | ------ | ------ |
-| **Redis** | [Github Repository](https://github.com/redis/redis){:target="_blank"} |
+| **Redis** | [Github Repository](https://github.com/redis/redis) |
 | **Memcached** | [Github Repository](https://github.com/memcached/memcached) |
 | **Apcu** | [PHP Manual](https://www.php.net/manual/en/book.apcu.php) |
 | **Mcrypt** | [PHP Manual](https://www.php.net/manual/en/book.mcrypt.php) |
