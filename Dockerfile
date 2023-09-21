@@ -50,7 +50,6 @@ RUN pecl install redis \
             pcntl \
             ftp \
             bcmath \
-            xml \
     && docker-php-ext-enable \
             mcrypt \
             redis \
