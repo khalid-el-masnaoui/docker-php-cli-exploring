@@ -2,11 +2,19 @@ FROM php:8.2-cli
 
 SHELL ["/bin/bash", "-c"]
 
+RUN chmod 1777 /tmp
 RUN  apt-get update -y && apt-get install -y procps 
+ 
+#add user and group
+RUN groupadd -f www-data && \
+    (id -u www-data &> /dev/null || useradd -G www-data www-data -D)
 
-#ADD user www-data
-RUN (id -u www-data &> /dev/null || useradd www-data) && (groups www-data | grep -qw www-data || (groupadd www-data &&  usermod -a -G www-data www-data))
-#USER www-data
+#assign the created user same UID AND GUID OF the host for the mounted dir owner
+ARG UID
+ARG GID
+ 
+RUN usermod -u $UID www-data
+RUN groupmod -g $GID www-data
 
 
 # Install PHP extensions deps
@@ -87,16 +95,28 @@ COPY ./configurations/mods-available/opcache.ini  /usr/local/etc/php/conf.d/
 #disable the default opcache.ini
 RUN mv /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini /usr/local/etc/php/conf.d/odocker-php-ext-pcache.ini.disabled
 
+# Default sessions directory
+RUN install  -o www-data -g www-data /dev/null /var/run/php.pid && \
+    install -d -m 0755 -o www-data -g www-data /var/lib/php/sessions
+
+
+#clean dirs
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 WORKDIR /dockerBuild
 
-CMD [ "php", "./index.php" ]
-
-#Define mountable directories -- for developement.
-#VOLUME ["/dockerBuild"]
+#php logs
+RUN install -o www-data -g www-data -d /var/log/php && \
+    install -o www-data -g www-data /dev/null /var/log/php/error.log && \
+    chown www-data:www-data -R /var/log/php
 
 #for a local server
 EXPOSE 8080
 CMD ["php","-S","0.0.0.0:8080"]
+
+#Define mountable directories -- for developement.
+VOLUME ["/dockerBuild", "/var/log/php"]
+
 
 
 

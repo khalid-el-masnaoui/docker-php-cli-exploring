@@ -1,0 +1,2 @@
+[26-Sep-2023 23:54:22 UTC] PHP Warning:  Invalid "upload_max_filesize" setting. Invalid quantity "1.1M", interpreting as "1M" for backwards compatibility in Unknown on line 0
+[26-Sep-2023 23:54:22 UTC] PHP Warning:  Invalid "post_max_size" setting. Invalid quantity "1.5M", interpreting as "1M" for backwards compatibility in Unknown on line 0
