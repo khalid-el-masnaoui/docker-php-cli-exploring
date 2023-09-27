@@ -2,7 +2,7 @@
 
 ## _Custom php-cli image with dependencies and extensions_
 
-Exploring docker by creating custom php-cli image including many extensions and their required dependencies.
+Exploring docker by creating custom php-cli image including many extensions and their required dependencies, and mapping the container user UID with the host UID to make shared files (via volumes) accessibles.
 
 
 ## Extensions :sparkles:
@@ -34,6 +34,8 @@ In addition of the above extension , this php-cli image includes _**Composer**_ 
 
 This php-cli is not using the custom php configs, instead it is relaying on some custom configurations found inside the folder _**/usr/local/etc/php/**_, specifcally _php.ini_ file and the enabled modules inside the folder _conf.d_, in which only opache module (_opache.ini_) has custom configurations.
 feel free to update those configs as per your need.
+the container is running under www-data user with UID mapped to the host local user's UID
+
 
 ## Docker :hammer_and_wrench:
 By default, the Docker will expose ports 8080/tcp for the php local server, so change this within the
@@ -42,8 +44,11 @@ build the image.
 
 ```sh
 cd docker-php-cli-exploring
+#create logs directory since it is mounted to the container (or you can use --volume instead of --mount option and the logs folder will be created automatically on the local host)
+mkdir logs
+
 #image build
-docker build . -t cs-php-cli -f Dockerfile
+docker build . -t cs-php-cli -f Dockerfile -build-arg="UID=$(id -u)" --build-arg="GID=$(id -g)"
 ```
 
 This will create the custom php-cli image and pull-in/install the necessary dependencies and extensions.
@@ -65,3 +70,4 @@ your preferred browser.
 ```
 
 The above url will open a page displaying all PHP information. check all extensions are enabled such as opcache , apcu , jit ...
+
