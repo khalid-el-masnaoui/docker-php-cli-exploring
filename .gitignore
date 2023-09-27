@@ -1,3 +1,4 @@
 /src/file.txt
 /*.swp
 /logs
+/src/vendor

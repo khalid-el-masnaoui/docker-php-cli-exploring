@@ -86,7 +86,7 @@ RUN wget https://phar.phpunit.de/phpunit.phar -O /usr/local/bin/phpunit \
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /dockerBuild
+RUN install -m 755 -o www-data -g www-data -d /dockerBuild
 
 COPY --chown=www-data:www-data ./src/ /dockerBuild/
 COPY ./configurations/php.ini  /usr/local/etc/php/
@@ -105,9 +105,13 @@ WORKDIR /dockerBuild
 
 #php logs
 RUN install -o www-data -g www-data -d /var/log/php && \
-    install -o www-data -g www-data /dev/null /var/log/php/error.log 
+    install -o www-data -g www-data /dev/null /var/log/php/error.log && \ 
+    chown -R www-data:www-data /var/www
 
 USER www-data
+
+#install composer dep
+RUN composer install 
 
 #for a local server
 EXPOSE 8080
