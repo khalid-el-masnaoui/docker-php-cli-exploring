@@ -59,7 +59,7 @@ port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
 
 ```sh
 #running the container container
-docker run -itd  --rm -p 8080:8080 --name php-cli --mount type=bind,source=./src/,destination=/dockerBuild/ cs-php-cli
+docker run -itd  --rm -p 8080:8080 --name php-cli --mount type=bind,source=./src/,destination=/dockerBuild/  --mount type=bind,source=./logs/,destination=/var/log/php/ cs-php-cli
 ```
 
 Verify the deployment by navigating to your server address in
