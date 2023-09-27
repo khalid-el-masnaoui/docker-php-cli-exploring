@@ -88,7 +88,7 @@ RUN apt-get clean \
 
 RUN mkdir /dockerBuild
 
-COPY ./src/ /dockerBuild/
+COPY --chown=www-data:www-data ./src/ /dockerBuild/
 COPY ./configurations/php.ini  /usr/local/etc/php/
 COPY ./configurations/mods-available/opcache.ini  /usr/local/etc/php/conf.d/
 
@@ -96,9 +96,7 @@ COPY ./configurations/mods-available/opcache.ini  /usr/local/etc/php/conf.d/
 RUN mv /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini /usr/local/etc/php/conf.d/odocker-php-ext-pcache.ini.disabled
 
 # Default sessions directory
-RUN install  -o www-data -g www-data /dev/null /var/run/php.pid && \
-    install -d -m 0755 -o www-data -g www-data /var/lib/php/sessions
-
+RUN install -d -m 0755 -o www-data -g www-data /var/lib/php/sessions
 
 #clean dirs
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -107,8 +105,9 @@ WORKDIR /dockerBuild
 
 #php logs
 RUN install -o www-data -g www-data -d /var/log/php && \
-    install -o www-data -g www-data /dev/null /var/log/php/error.log && \
-    chown www-data:www-data -R /var/log/php
+    install -o www-data -g www-data /dev/null /var/log/php/error.log 
+
+USER www-data
 
 #for a local server
 EXPOSE 8080

@@ -7,5 +7,5 @@ fwrite($fp,$content);
 fclose($fp);
 */
 
-phpinfo()
+phpinfo();
 ?>
