@@ -1,0 +1,15 @@
+{
+    "name": "malidkha/php_cli_custom_docker_image",
+    "autoload": {
+        "psr-4": {
+            "Malidkha\\PhpCliCustomDockerImage\\": "."
+        }
+    },
+    "authors": [
+        {
+            "name": "khalid-masnaoui",
+            "email": "elmasnaoui.khalid1@gmail.com"
+        }
+    ],
+    "require": {}
+}
