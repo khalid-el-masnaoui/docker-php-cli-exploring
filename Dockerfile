@@ -67,12 +67,16 @@ RUN pecl install redis \
 
 # Install Composer
 #traditional
+#RUN install -d -m 0755 -o www-data -g www-data /.composer
 #RUN curl -sS https://getcomposer.org/installer | php -- \
 #        --install-dir=/usr/local/bin \
 #        --filename=composer
+#RUN chown -R www-data:www-data /.composer
 
 #using multistage 
+RUN install -d -m 0755 -o www-data -g www-data ~/.composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN chown -R www-data:www-data ~/.composer
 
 #add apcu
 RUN pecl install apcu \

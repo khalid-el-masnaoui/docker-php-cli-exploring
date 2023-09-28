@@ -48,7 +48,7 @@ cd docker-php-cli-exploring
 mkdir logs
 
 #image build
-docker build . -t cs-php-cli -f Dockerfile -build-arg="UID=$(id -u)" --build-arg="GID=$(id -g)"
+docker build . -t cs-php-cli -f Dockerfile --build-arg="UID=$(id -u)" --build-arg="GID=$(id -g)"
 ```
 
 This will create the custom php-cli image and pull-in/install the necessary dependencies and extensions.
