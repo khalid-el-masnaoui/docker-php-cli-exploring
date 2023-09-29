@@ -32,7 +32,7 @@ In addition of the above extension , this php-cli image includes _**Composer**_ 
 
 ## PHP Configurations :gear:
 
-This php-cli is not using the custom php configs, instead it is relaying on some custom configurations found inside the folder _**/usr/local/etc/php/**_, specifcally _php.ini_ file and the enabled modules inside the folder _conf.d_, in which only opache module (_opache.ini_) has custom configurations.
+This php-cli is not using the default php configs, instead it is relaying on some custom configurations found inside the folder _**/usr/local/etc/php/**_, specifcally _php.ini_ file and the enabled modules inside the folder _conf.d_, in which only opache module (_opache.ini_) has custom configurations.
 feel free to update those configs as per your need.
 the container is running under www-data user with UID mapped to the host local user's UID
 
