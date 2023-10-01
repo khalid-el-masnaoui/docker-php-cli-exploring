@@ -89,7 +89,7 @@ RUN wget https://phar.phpunit.de/phpunit.phar -O /usr/local/bin/phpunit \
 
 # Clean repository
 RUN apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN install -m 755 -o www-data -g www-data -d /dockerBuild
 
@@ -102,9 +102,6 @@ RUN mv /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini /usr/local/etc/php/c
 
 # Default sessions directory
 RUN install -d -m 0755 -o www-data -g www-data /var/lib/php/sessions
-
-#clean dirs
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /dockerBuild
 
