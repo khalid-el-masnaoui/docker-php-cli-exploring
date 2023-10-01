@@ -3,6 +3,7 @@
 ## _Custom php-cli image with dependencies and extensions_
 
 Exploring docker by creating custom php-cli image including many extensions and their required dependencies, and mapping the container user UID with the host UID to make shared files (via volumes) accessibles.
+The container is running as a non-root (www-data user).
 
 
 ## Extensions :sparkles:
