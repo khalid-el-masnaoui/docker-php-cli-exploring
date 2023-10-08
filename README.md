@@ -49,7 +49,7 @@ Clone this repository and follow the simple steps:
 
 ```bash
 # clone
-$ git clone git@git@github.com:khalid-el-masnaoui/docker-php-cli-exploring.git
+$ git clone git@github.com:khalid-el-masnaoui/docker-php-cli-exploring.git
 
 #cd into the working diretcory
 $ cd docker-php-cli-exploring
