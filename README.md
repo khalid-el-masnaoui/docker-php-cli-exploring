@@ -26,7 +26,7 @@ This php-cli image includes all the following extensions (installed and enabled)
 | **Ftp** | [PHP Manual](https://www.php.net/manual/en/book.ftp.php) |
 | **Bcmath** | [PHP Manual](https://www.php.net/manual/en/book.bc.php) |
 | **Intl** | [PHP Manual](https://www.php.net/manual/en/book.intl.php) |
-| **Gettext** | [PHP Manula](https://www.php.net/manual/en/function.gettext.php) ]
+| **Gettext** | [PHP Manual](https://www.php.net/manual/en/function.gettext.php) ] |
 And many others, you can discover them by yourself :eyes:
 
 In addition of the above extension , this php-cli image includes _**Composer**_ and _**PhpUnit**_ as well, installed globally, and such as _wget_, _vim_, _git_, _unzip_ ...
