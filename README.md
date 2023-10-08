@@ -44,11 +44,18 @@ By default, the Docker will expose ports 8080/tcp for the php local server, so c
 Dockerfile if necessary. When ready, simply use the Dockerfile to
 build the image.
 
-```sh
-cd docker-php-cli-exploring
+#####  Installation  :electric_plug:
+Clone this repository and follow the simple steps:
+
+```bash
+# clone
+$ git clone git@git@github.com:khalid-el-masnaoui/docker-php-cli-exploring.git
+
+#cd into the working diretcory
+$ cd docker-php-cli-exploring
 
 #image build
-docker build . -t cs-php-cli -f Dockerfile --build-arg="UID=$(id -u)" --build-arg="GID=$(id -g)"
+$ docker build . -t cs-php-cli -f Dockerfile --build-arg="UID=$(id -u)" --build-arg="GID=$(id -g)"
 ```
 
 This will create the custom php-cli image and pull-in/install the necessary dependencies and extensions.
@@ -59,7 +66,7 @@ port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
 
 ```sh
 #running the container container
-docker run -itd  --rm -p 8080:8080 --name php-cli --mount type=bind,source=./src/,destination=/dockerBuild/  --mount type=bind,source=./logs/,destination=/var/log/php/ cs-php-cli
+$ docker run -itd  --rm -p 8080:8080 --name php-cli --mount type=bind,source=./src/,destination=/dockerBuild/  --mount type=bind,source=./logs/,destination=/var/log/php/ cs-php-cli
 
 #the mounts are for developement purposes -- composer install command inside dockerfile wont take effect if the src/ folder mount is specified -- which (the command) is not needed during the developement 
 ```
