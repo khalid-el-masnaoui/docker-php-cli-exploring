@@ -113,7 +113,13 @@ RUN install -o www-data -g www-data -d /var/log/php && \
 USER www-data
 
 #install composer dep
-RUN composer install 
+RUN composer install \
+    --no-interaction \
+    --no-plugins \
+    --no-scripts \
+    --no-dev \
+    --prefer-dist\
+    --optimize-autoloade
 
 #for a local server
 EXPOSE 8080
